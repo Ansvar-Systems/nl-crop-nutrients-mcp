@@ -4,13 +4,13 @@
 [![GHCR](https://github.com/ansvar-systems/nl-crop-nutrients-mcp/actions/workflows/ghcr-build.yml/badge.svg)](https://github.com/ansvar-systems/nl-crop-nutrients-mcp/actions/workflows/ghcr-build.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-UK crop nutrient recommendations via the [Model Context Protocol](https://modelcontextprotocol.io). Query AHDB RB209 data, soil types, NPK planning, and commodity prices -- all from your AI assistant.
+Dutch crop nutrient recommendations via the [Model Context Protocol](https://modelcontextprotocol.io). Query RVO gebruiksnormen, soil types, NPK planning, and commodity prices -- all from your AI assistant.
 
 Part of [Ansvar Open Agriculture](https://ansvar.eu/open-agriculture).
 
 ## Why This Exists
 
-Farmers and agronomists need quick access to nutrient recommendation tables, commodity prices, and soil data. This information is published by AHDB and DEFRA but is locked in PDFs, spreadsheets, and web pages that AI assistants cannot query directly. This MCP server makes it all searchable.
+Farmers and agronomists in the Netherlands need quick access to nutrient application norms (gebruiksnormen), commodity prices, and soil data. This information is published by RVO, the Meststoffenwet, and WUR but is scattered across government websites, legal texts, and PDFs that AI assistants cannot query directly. This MCP server makes it all searchable.
 
 ## Quick Start
 
@@ -21,7 +21,7 @@ Add to `claude_desktop_config.json`:
 ```json
 {
   "mcpServers": {
-    "uk-crop-nutrients": {
+    "nl-crop-nutrients": {
       "command": "npx",
       "args": ["-y", "@ansvar/nl-crop-nutrients-mcp"]
     }
@@ -32,7 +32,7 @@ Add to `claude_desktop_config.json`:
 ### Claude Code
 
 ```bash
-claude mcp add uk-crop-nutrients npx @ansvar/nl-crop-nutrients-mcp
+claude mcp add nl-crop-nutrients npx @ansvar/nl-crop-nutrients-mcp
 ```
 
 ### Streamable HTTP (remote)
@@ -57,20 +57,23 @@ npx @ansvar/nl-crop-nutrients-mcp
 
 Ask your AI assistant:
 
-- "What NPK does winter wheat need on heavy clay soil?"
-- "What's the current price of spring barley?"
-- "Calculate gross margin for 8.5 t/ha winter wheat at 520/ha input costs"
-- "What soil group is sandy loam in RB209?"
-- "Search for nitrogen recommendations for oilseed rape"
+- "Wat is de N-gebruiksnorm voor wintertarwe op kleigrond?"
+- "What NPK does winter wheat need on clay soil in the Netherlands?"
+- "Wat is de huidige prijs van consumptieaardappelen?"
+- "Welke grondsoort is dalgrond?"
+- "Zoek bemestingsadvies voor snijmais op zand"
+- "Calculate gross margin for 9 t/ha wintertarwe at 900/ha input costs"
 
 ## Stats
 
 | Metric | Value |
 |--------|-------|
 | Tools | 10 (3 meta + 7 domain) |
-| Jurisdiction | GB |
-| Data sources | AHDB RB209, DEFRA Price Indices, AHDB Market Data |
-| License (data) | Open Government Licence v3 |
+| Crops | 14 (arable + grassland) |
+| Soil types | 5 (klei, zand, dalgrond, veen, loss) |
+| Jurisdiction | NL |
+| Data sources | RVO Handboek Bodem en Bemesting, Meststoffenwet, WUR Agrimatie |
+| License (data) | Public domain (Dutch government) |
 | License (code) | Apache-2.0 |
 | Transport | stdio + Streamable HTTP |
 
@@ -104,7 +107,7 @@ See [SECURITY.md](SECURITY.md) for reporting policy.
 
 ## Disclaimer
 
-This tool provides reference data for informational purposes only. It is not professional agricultural advice. See [DISCLAIMER.md](DISCLAIMER.md).
+This tool provides reference data for informational purposes only. It is not professional agricultural advice. Nutrient application norms (gebruiksnormen) are legally binding under the Meststoffenwet -- verify current norms at [rvo.nl](https://www.rvo.nl/onderwerpen/mest) before application. See [DISCLAIMER.md](DISCLAIMER.md).
 
 ## Contributing
 
@@ -112,4 +115,4 @@ Issues and pull requests welcome. For security vulnerabilities, email security@a
 
 ## License
 
-Apache-2.0. Data sourced under Open Government Licence v3.
+Apache-2.0. Data sourced from Dutch government publications (public domain) and WUR research data.

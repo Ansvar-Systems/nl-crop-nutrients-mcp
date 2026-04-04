@@ -3,20 +3,64 @@ mcp_name: "Netherlands Crop Nutrients MCP"
 category: "domain_intelligence"
 
 sources:
-  # TODO: Add Netherlands-specific data sources here.
-  # Example:
-  # - name: "National Agriculture Advisory Service"
-  #   authority: "Ministry of Agriculture"
-  #   official_url: "https://example.gov.nl/agriculture"
-  #   retrieval_method: "HTML_SCRAPE"
-  #   format: "HTML"
-  #   authentication: "none"
-  #   update_frequency: "annual"
-  #   license:
-  #     type: "Open Government Licence"
-  #     url: "https://example.gov.nl/licence"
-  #   coverage:
-  #     scope: "National agricultural data"
-  #   languages:
-  #     - "nl"
-  []
+  - name: "RVO Handboek Bodem en Bemesting"
+    authority: "Rijksdienst voor Ondernemend Nederland (RVO)"
+    official_url: "https://www.handboekbodemenbemesting.nl"
+    retrieval_method: "HTML_SCRAPE"
+    format: "HTML"
+    authentication: "none"
+    update_frequency: "annual"
+    license:
+      type: "Public domain"
+      url: "https://www.rijksoverheid.nl/copyright"
+    coverage:
+      scope: "NPK recommendations for all major Dutch crops by soil type and phosphate status"
+    languages:
+      - "nl"
+
+  - name: "Meststoffenwet / Uitvoeringsregeling Meststoffenwet"
+    authority: "Ministerie van Landbouw, Natuur en Voedselkwaliteit (LNV)"
+    official_url: "https://wetten.overheid.nl/BWBR0004054"
+    retrieval_method: "LEGAL_REFERENCE"
+    format: "HTML"
+    authentication: "none"
+    update_frequency: "annual (legislative cycle)"
+    license:
+      type: "Public domain"
+      url: "https://www.rijksoverheid.nl/copyright"
+    coverage:
+      scope: "Nitrogen and phosphate application norms (gebruiksnormen) for Dutch agriculture"
+    languages:
+      - "nl"
+
+  - name: "WUR Agrimatie"
+    authority: "Wageningen University & Research (WUR)"
+    official_url: "https://www.agrimatie.nl"
+    retrieval_method: "HTML_SCRAPE"
+    format: "HTML"
+    authentication: "none"
+    update_frequency: "monthly"
+    license:
+      type: "Public domain"
+      url: "https://www.wur.nl/en/disclaimer.htm"
+    coverage:
+      scope: "Dutch agricultural commodity prices, market data, and economic indicators"
+    languages:
+      - "nl"
+      - "en"
+
+  - name: "BLGG AgroXpertus Bodemanalyse"
+    authority: "Eurofins Agro (formerly BLGG AgroXpertus)"
+    official_url: "https://www.eurofins-agro.com"
+    retrieval_method: "REFERENCE"
+    format: "PDF/HTML"
+    authentication: "none"
+    update_frequency: "continuous (soil analysis results)"
+    license:
+      type: "Proprietary reference"
+      url: "https://www.eurofins-agro.com/nl/disclaimer"
+    coverage:
+      scope: "Dutch soil classification, P-AL/Pw/P-CaCl2 reference values, soil group definitions"
+    languages:
+      - "nl"
+      - "en"

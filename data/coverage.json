@@ -1,0 +1,17 @@
+{
+  "mcp_name": "Netherlands Crop Nutrients MCP",
+  "jurisdiction": "NL",
+  "build_date": "2026-04-04",
+  "status": "production",
+  "crops": 14,
+  "soil_types": 5,
+  "nutrient_recommendations": 32,
+  "commodity_prices": 8,
+  "fts_entries": 21,
+  "data_sources": [
+    "RVO Handboek Bodem en Bemesting",
+    "Meststoffenwet / Uitvoeringsregeling Meststoffenwet",
+    "WUR Agrimatie",
+    "BLGG AgroXpertus"
+  ]
+}

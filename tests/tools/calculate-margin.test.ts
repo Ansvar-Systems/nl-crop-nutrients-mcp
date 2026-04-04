@@ -19,17 +19,17 @@ describe('calculate_margin tool', () => {
   });
 
   test('calculates gross margin using DB price', () => {
-    const result = handleCalculateMargin(db, { crop: 'spring-barley', yield_t_ha: 5.5 });
+    const result = handleCalculateMargin(db, { crop: 'zomergerst', yield_t_ha: 6.0 });
     expect(result).toHaveProperty('revenue_per_ha');
-    // 5.5 * 165.0 = 907.50
-    expect((result as { revenue_per_ha: number }).revenue_per_ha).toBe(907.50);
-    expect((result as { price_source: string }).price_source).toBe('ahdb_market');
+    // 6.0 * 250.0 = 1500.00
+    expect((result as { revenue_per_ha: number }).revenue_per_ha).toBe(1500.00);
+    expect((result as { price_source: string }).price_source).toBe('agrimatie_wur');
   });
 
   test('uses provided price when given', () => {
-    const result = handleCalculateMargin(db, { crop: 'spring-barley', yield_t_ha: 5.5, price_per_tonne: 200 });
-    // 5.5 * 200 = 1100
-    expect((result as { revenue_per_ha: number }).revenue_per_ha).toBe(1100);
+    const result = handleCalculateMargin(db, { crop: 'zomergerst', yield_t_ha: 6.0, price_per_tonne: 200 });
+    // 6.0 * 200 = 1200
+    expect((result as { revenue_per_ha: number }).revenue_per_ha).toBe(1200);
     expect((result as { price_source: string }).price_source).toBe('user_provided');
   });
 
@@ -39,8 +39,8 @@ describe('calculate_margin tool', () => {
   });
 
   test('subtracts input costs', () => {
-    const result = handleCalculateMargin(db, { crop: 'winter-wheat', yield_t_ha: 8.0, input_costs: 500 });
-    // 8.0 * 195 = 1560, 1560 - 500 = 1060
-    expect((result as { gross_margin_per_ha: number }).gross_margin_per_ha).toBe(1060);
+    const result = handleCalculateMargin(db, { crop: 'wintertarwe', yield_t_ha: 9.0, input_costs: 500 });
+    // 9.0 * 210 = 1890, 1890 - 500 = 1390
+    expect((result as { gross_margin_per_ha: number }).gross_margin_per_ha).toBe(1390);
   });
 });

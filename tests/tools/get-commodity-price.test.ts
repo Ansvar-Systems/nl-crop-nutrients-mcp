@@ -18,11 +18,11 @@ describe('get_commodity_price tool', () => {
     if (existsSync(TEST_DB)) unlinkSync(TEST_DB);
   });
 
-  test('returns price for winter wheat', () => {
-    const result = handleGetCommodityPrice(db, { crop: 'winter-wheat' });
-    expect(result).toHaveProperty('price_per_tonne', 195.0);
-    expect(result).toHaveProperty('currency', 'GBP');
-    expect(result).toHaveProperty('price_source', 'ahdb_market');
+  test('returns price for wintertarwe', () => {
+    const result = handleGetCommodityPrice(db, { crop: 'wintertarwe' });
+    expect(result).toHaveProperty('price_per_tonne', 210.0);
+    expect(result).toHaveProperty('currency', 'EUR');
+    expect(result).toHaveProperty('price_source', 'agrimatie_wur');
   });
 
   test('returns not_found for unknown crop', () => {
@@ -31,7 +31,7 @@ describe('get_commodity_price tool', () => {
   });
 
   test('includes source attribution', () => {
-    const result = handleGetCommodityPrice(db, { crop: 'spring-barley' });
+    const result = handleGetCommodityPrice(db, { crop: 'zomergerst' });
     expect(result).toHaveProperty('source_attribution');
   });
 });

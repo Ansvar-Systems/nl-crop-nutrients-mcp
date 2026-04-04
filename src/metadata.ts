@@ -9,16 +9,17 @@ export interface Meta {
 
 const DISCLAIMER =
   'This data is provided for informational purposes only. It does not constitute professional ' +
-  'agricultural advice. Always consult a qualified agronomist or FACTS-qualified advisor before ' +
-  'making nutrient management decisions. Data sourced from AHDB RB209, DEFRA, and other UK ' +
-  'government publications under Open Government Licence.';
+  'agricultural advice. Always consult a qualified agronomist or certified fertilisation advisor ' +
+  '(bemestingsadviseur) before making nutrient management decisions. Data sourced from RVO Handboek ' +
+  'Bodem en Bemesting, Meststoffenwet, and WUR Agrimatie. Nutrient application norms (gebruiksnormen) ' +
+  'are legally binding under the Meststoffenwet -- verify current norms at rvo.nl before application.';
 
 export function buildMeta(overrides?: Partial<Meta>): Meta {
   return {
     disclaimer: DISCLAIMER,
     data_age: overrides?.data_age ?? 'unknown',
-    source_url: overrides?.source_url ?? 'https://ahdb.org.uk/nutrient-management-guide',
-    copyright: 'Data: Crown Copyright and AHDB. Server: Apache-2.0 Ansvar Systems.',
+    source_url: overrides?.source_url ?? 'https://www.handboekbodemenbemesting.nl',
+    copyright: 'Data: RVO / Dutch Government / WUR. Server: Apache-2.0 Ansvar Systems.',
     server: 'nl-crop-nutrients-mcp',
     version: '0.1.0',
     ...overrides,

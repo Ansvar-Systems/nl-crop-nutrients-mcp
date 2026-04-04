@@ -17,39 +17,39 @@ export function handleListSources(db: Database): { sources: Source[]; _meta: Ret
 
   const sources: Source[] = [
     {
-      name: 'AHDB RB209 Nutrient Management Guide',
-      authority: 'Agriculture and Horticulture Development Board',
-      official_url: 'https://ahdb.org.uk/nutrient-management-guide',
+      name: 'RVO Handboek Bodem en Bemesting',
+      authority: 'Rijksdienst voor Ondernemend Nederland (RVO)',
+      official_url: 'https://www.handboekbodemenbemesting.nl',
       retrieval_method: 'HTML_SCRAPE',
       update_frequency: 'annual',
-      license: 'Open Government Licence v3',
-      coverage: 'NPK recommendations for all major UK crops by soil type and SNS index',
+      license: 'Public domain (Dutch government publication)',
+      coverage: 'NPK recommendations for all major Dutch crops by soil type, phosphate status, and crop group',
       last_retrieved: lastIngest?.value,
     },
     {
-      name: 'DEFRA Agricultural Price Indices',
-      authority: 'Department for Environment, Food and Rural Affairs',
-      official_url: 'https://www.gov.uk/government/statistics/agricultural-price-indices',
-      retrieval_method: 'BULK_DOWNLOAD',
-      update_frequency: 'monthly',
-      license: 'Open Government Licence v3',
-      coverage: 'UK agricultural commodity prices',
+      name: 'Meststoffenwet / Uitvoeringsregeling Meststoffenwet',
+      authority: 'Ministerie van Landbouw, Natuur en Voedselkwaliteit (LNV)',
+      official_url: 'https://wetten.overheid.nl/BWBR0004054',
+      retrieval_method: 'LEGAL_REFERENCE',
+      update_frequency: 'annual (legislative cycle)',
+      license: 'Public domain (Dutch legislation)',
+      coverage: 'Nitrogen and phosphate application norms (gebruiksnormen) for Dutch agriculture',
       last_retrieved: lastIngest?.value,
     },
     {
-      name: 'AHDB Market Data',
-      authority: 'Agriculture and Horticulture Development Board',
-      official_url: 'https://ahdb.org.uk/cereals-oilseeds/cereal-and-oilseed-markets',
+      name: 'WUR Agrimatie',
+      authority: 'Wageningen University & Research (WUR)',
+      official_url: 'https://www.agrimatie.nl',
       retrieval_method: 'HTML_SCRAPE',
-      update_frequency: 'weekly',
-      license: 'Open Government Licence v3',
-      coverage: 'UK delivered and ex-farm cereal and oilseed prices',
+      update_frequency: 'monthly',
+      license: 'Public domain (WUR research data)',
+      coverage: 'Dutch agricultural commodity prices and market data',
       last_retrieved: lastIngest?.value,
     },
   ];
 
   return {
     sources,
-    _meta: buildMeta({ source_url: 'https://ahdb.org.uk/nutrient-management-guide' }),
+    _meta: buildMeta({ source_url: 'https://www.handboekbodemenbemesting.nl' }),
   };
 }

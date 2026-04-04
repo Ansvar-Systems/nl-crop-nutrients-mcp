@@ -18,19 +18,19 @@ describe('search_crop_requirements tool', () => {
     if (existsSync(TEST_DB)) unlinkSync(TEST_DB);
   });
 
-  test('returns results for nitrogen query', () => {
-    const result = handleSearchCropRequirements(db, { query: 'nitrogen' });
+  test('returns results for stikstof query', () => {
+    const result = handleSearchCropRequirements(db, { query: 'bemestingsadvies' });
     expect(result).toHaveProperty('results_count');
     expect((result as { results_count: number }).results_count).toBeGreaterThan(0);
   });
 
   test('respects crop_group filter', () => {
-    const result = handleSearchCropRequirements(db, { query: 'nitrogen', crop_group: 'cereals' });
+    const result = handleSearchCropRequirements(db, { query: 'gebruiksnorm', crop_group: 'granen' });
     expect((result as { results: unknown[] }).results.length).toBeGreaterThan(0);
   });
 
   test('rejects unsupported jurisdiction', () => {
-    const result = handleSearchCropRequirements(db, { query: 'nitrogen', jurisdiction: 'FR' });
+    const result = handleSearchCropRequirements(db, { query: 'stikstof', jurisdiction: 'FR' });
     expect(result).toHaveProperty('error', 'jurisdiction_not_supported');
   });
 });
