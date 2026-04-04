@@ -18,14 +18,21 @@ const lastIngest = db.get<{ value: string }>('SELECT value FROM db_metadata WHER
 db.close();
 
 const coverage = {
-  mcp_name: 'UK Crop Nutrients MCP',
-  jurisdiction: 'GB',
+  mcp_name: 'Netherlands Crop Nutrients MCP',
+  jurisdiction: 'NL',
   build_date: lastIngest?.value ?? new Date().toISOString().split('T')[0],
+  status: 'production',
   crops,
   soil_types: soils,
   nutrient_recommendations: recs,
   commodity_prices: prices,
   fts_entries: fts,
+  data_sources: [
+    'RVO Handboek Bodem en Bemesting',
+    'Meststoffenwet / Uitvoeringsregeling Meststoffenwet',
+    'WUR Agrimatie',
+    'BLGG AgroXpertus',
+  ],
 };
 
 writeFileSync('data/coverage.json', JSON.stringify(coverage, null, 2));
