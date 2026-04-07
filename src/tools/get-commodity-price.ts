@@ -1,4 +1,5 @@
 import { buildMeta, buildStalenessWarning } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
 
@@ -58,5 +59,11 @@ export function handleGetCommodityPrice(db: Database, args: PriceArgs) {
       data_age: price.published_date ?? 'unknown',
       source_url: 'https://ahdb.org.uk/cereals-oilseeds/cereal-and-oilseed-markets',
     }),
+    _citation: buildCitation(
+      `NL Commodity Price — ${price.crop_name}`,
+      `Dutch commodity price for ${price.crop_name}`,
+      'get_commodity_price',
+      { crop: args.crop, ...(args.market ? { market: args.market } : {}) },
+    ),
   };
 }
